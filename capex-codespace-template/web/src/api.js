@@ -1,5 +1,5 @@
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = 'https://orange-carnival-xpj4gj4v7r7cpprg-3000.app.github.dev/'
 
 export async function getProjects() {
   const res = await fetch(`${API_URL}/api/projects`);
