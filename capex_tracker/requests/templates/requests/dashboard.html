@@ -1,0 +1,4 @@
+Request Dashboard
+{% for req in requests %} {% endfor %}
+ID	Theatre	Equipment	Status	Total Price
+{{ req.id }}	{{ req.theatre }}	{{ req.equipment }}	{{ req.approval_status }}	${{ req.total_price }}
