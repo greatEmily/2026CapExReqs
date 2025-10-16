@@ -1,4 +1,14 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %}Submit Request{% endblock %} {% block content %}
-Submit Equipment Request
-{% csrf_token %} {{ form|crispy }}
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Submit Request{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Submit Equipment Request</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+    </form>
+</section>
 {% endblock %}
