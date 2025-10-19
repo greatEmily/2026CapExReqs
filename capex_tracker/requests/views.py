@@ -14,15 +14,19 @@ def submit_request(request):
     if request.method == 'POST':
         form = RequestForm(request.POST)
         if form.is_valid():
-            new_request = form.save(commit=False)
-            new_request.requested_by = request.user
-            # Assign user's theatre if applicable
-            new_request.theatre = Theatre.objects.get(...)  # We'll customize this later
-            new_request.save()
-            return redirect('dashboard')
+            # Save logic here — either to a model or trigger admin workflow
+            # Example:
+            Request.objects.create(
+                equipment=form.cleaned_data['equipment'],
+                approval_status='Requested',
+                notes=form.cleaned_data['notes'],
+                requester=request.user  # if using auth
+            )
+            return redirect('success_page')
     else:
         form = RequestForm()
     return render(request, 'requests/submit_request.html', {'form': form})
+
 
 
 @login_required
