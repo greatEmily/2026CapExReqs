@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Theatre, Equipment, Request
+from django.utils.html import format_html
 
 # Register your models here.
 @admin.register(Theatre)
@@ -9,8 +10,16 @@ class TheatreAdmin(admin.ModelAdmin):
 
 @admin.register(Equipment)
 class EquipmentAdmin(admin.ModelAdmin):
-    list_display = ('make', 'model', 'serial_number', 'price')
+    list_display = ('make', 'model', 'item_number', 'price', 'photo_preview')
+    readonly_fields = ['photo_preview']
     search_fields = ('make', 'model')
+
+    def photo_preview(self, obj):
+        if obj.photo:
+            return format_html('{}', obj.photo.url)
+        return "No photo available"
+    photo_preview.short_description = "Photo Preview"
+
 
 @admin.register(Request)
 class RequestAdmin(admin.ModelAdmin):
