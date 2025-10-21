@@ -12,6 +12,17 @@
     
     <form method="post">
   {% csrf_token %}
+
+  <div class="mb-3">
+    {{ form.name.label_tag }}
+    {{ form.name }}
+  </div>
+
+  <div class="mb-3">
+    {{ form.type.label_tag }}
+    {{ form.type }}
+  </div>
+
   <div class="mb-3">
     {{ form.equipment.label_tag }}
     {{ form.equipment }}
@@ -20,8 +31,8 @@
   {{ form.approval_status }}  <!-- Hidden field -->
 
   <div class="mb-3">
-    {{ form.notes.label_tag }}
-    {{ form.notes }}
+    {{ form.business_case.label_tag }}
+    {{ form.business_case }}
   </div>
 
   <button type="submit" class="btn btn-primary">Submit Request</button>
