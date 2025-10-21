@@ -2,6 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Type(models.Model):
+    type = models.CharField(max_length=50, choices=[
+        ('New Equipment Request', 'New Equipment Request'),
+        ('Replacement Request', 'Replacement Request')
+    ])
+
 class Theatre(models.Model):
     number = models.CharField(max_length=5)
     name = models.CharField(max_length=100)
