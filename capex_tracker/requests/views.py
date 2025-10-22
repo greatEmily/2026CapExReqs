@@ -19,8 +19,10 @@ def submit_request(request):
             Request.objects.create(
                 equipment=form.cleaned_data['equipment'],
                 approval_status='Requested',
-                notes=form.cleaned_data['notes'],
-                requester=request.user  # if using auth
+                business_case=form.cleaned_data['business_case'],
+                requester=request.user,  # if using auth
+                name=form.cleaned_data['name'],
+                type=form.cleaned_data['type'],
             )
             return redirect('success_page')
     else:

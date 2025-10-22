@@ -45,6 +45,11 @@ class Request(models.Model):
     po_number = models.CharField(max_length=50, blank=True, null=True)
     shipping_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     tax = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    business_case = models.TextField(default="Not provided")
+    name = models.CharField(max_length=255)
+    type = models.CharField(max_length=100)
+    requester = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='requester_user')
+
 
     
     @property

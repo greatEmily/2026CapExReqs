@@ -30,6 +30,7 @@ class RequestForm(forms.Form):
         initial='Requested',
         widget=forms.HiddenInput()
     )
+    
     business_case = forms.CharField(
         widget=forms.Textarea(attrs={
             'class': 'form-control',
